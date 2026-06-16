@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Vitrine - Création de sites vitrine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="site-header" aria-label="Navigation principale">
+    <a class="brand" href="#" aria-label="Atelier Vitrine">
+      <span class="brand-mark" aria-hidden="true">AV</span>
+      <span>Atelier Vitrine</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Menu">
+      <a href="#services">Services</a>
+      <a href="#exemples">Exemples</a>
+      <a href="#offres">Offres</a>
+      <a href="#devis">Contact</a>
+    </nav>
+
+    <a class="nav-action" href="#devis" data-scroll="devis">Devis gratuit</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="sphere-layer" aria-hidden="true">
+        <span class="sphere sphere-primary"></span>
+        <span class="sphere sphere-secondary"></span>
+        <span class="sphere sphere-accent"></span>
+      </div>
+      <div class="three-stage" aria-hidden="true">
+        <canvas id="next-gen-scene"></canvas>
+        <div class="three-fallback">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="hero-inner">
+        <p class="eyebrow reveal-element" style="--reveal-delay:0ms">Sites vitrine de dernière génération</p>
+        <h1 id="hero-title" class="hero-title-animated">Votre vitrine en ligne, claire, élégante et prête à trouver des
+          clients.</h1>
+        <p class="hero-copy reveal-element" style="--reveal-delay:150ms">
+          Je conçois des sites internet premium pour indépendants, artisans et petites entreprises :
+          direction artistique, expérience mobile, animations 3D et accompagnement jusqu'au lancement.
+        </p>
+
+        <div class="price-highlight reveal-element" aria-label="Tarif de départ" style="--reveal-delay:250ms">
+          <strong>À partir de 500 €</strong>
+          <span>Le tarif évolue selon les besoins. Pour de simples petites modifications, une intervention plus légère
+            peut être proposée.</span>
+        </div>
+
+        <div class="hero-actions reveal-element" aria-label="Actions principales" style="--reveal-delay:300ms">
+          <a class="button button-primary" href="#devis" data-scroll="devis" data-project="Vitrine complète">
+            <span>Parler de votre projet</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </a>
+          <a class="button button-secondary" href="#offres" data-scroll="offres">
+            <span>Voir les offres</span>
+            <span class="button-icon" aria-hidden="true">↓</span>
+          </a>
+          <a class="button button-ghost" href="#exemples">
+            <span>Voir des exemples</span>
+            <span class="button-icon" aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-contact" aria-label="Coordonnées">
+          <span>Timothé Bonneau</span>
+          <a href="tel:0637696682">06 37 69 66 82</a>
+          <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+        </div>
+
+        <dl class="hero-proof reveal-element" aria-label="Points forts" style="--reveal-delay:420ms">
+          <div>
+            <dt data-count-up="10" data-suffix=" jours">10 jours</dt>
+            <dd>pour une première version</dd>
+          </div>
+          <div>
+            <dt data-count-up="100" data-suffix="%">100%</dt>
+            <dd>adapté mobile</dd>
+          </div>
+          <div>
+            <dt>SEO</dt>
+            <dd>bases optimisées</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="intro" id="services" aria-labelledby="intro-title">
+      <div class="intro-heading reveal-element" style="--reveal-delay:0ms">
+        <p class="section-kicker">Ce que l’on livre</p>
+        <h2 id="intro-title">Composez votre site avec les services qui comptent vraiment.</h2>
+      </div>
+
+      <p class="choice-helper service-choice-helper">Appuyez sur une option pour changer le service affiché.</p>
+
+      <div class="service-orbit" aria-label="Choix rapide des services">
+        <button class="service-orb is-active" type="button" data-service-orb="Design sur mesure">
+          <span class="orb-core"></span>
+          <span>Design</span>
+        </button>
+        <button class="service-orb" type="button" data-service-orb="Pages essentielles">
+          <span class="orb-core orb-core-alt"></span>
+          <span>Pages</span>
+        </button>
+        <button class="service-orb" type="button" data-service-orb="Mise en ligne">
+          <span class="orb-core orb-core-dark"></span>
+          <span>Lancement</span>
+        </button>
+      </div>
+      
+      <div class="service-chooser">
+        <div class="service-grid" aria-label="Choix des services" aria-hidden="true">
+          <article class="service-card is-active" tabindex="-1" role="button" aria-pressed="true" data-service-card
+            data-service-title="Design sur mesure"
+            data-service-summary="Une identité claire, une page d'accueil soignée et une présentation qui inspire confiance."
+            data-service-plan="Maquette visuelle, direction couleur, hiérarchie de contenu et rendu mobile."
+            data-service-message="Je souhaite prioriser le design sur mesure du site.">
+            <span class="service-icon" aria-hidden="true"></span>
+            <span class="service-status">Sélectionné</span>
+            <h3>Design sur mesure</h3>
+            <p>Une identité claire, une page d'accueil soignée et une présentation qui inspire confiance.</p>
+          </article>
+          <article class="service-card" tabindex="-1" role="button" aria-pressed="false" data-service-card
+            data-service-title="Pages essentielles"
+            data-service-summary="Accueil, services, à propos, avis, contact : tout ce qu’il faut pour présenter votre offre."
+            data-service-plan="Structure des pages, textes clés, sections de confiance et parcours vers le devis."
+            data-service-message="Je souhaite construire les pages essentielles du site vitrine.">
+            <span class="service-icon service-icon-alt" aria-hidden="true"></span>
+            <span class="service-status">Ajouter au devis</span>
+            <h3>Pages essentielles</h3>
+            <p>Accueil, services, à propos, avis, contact : tout ce qu’il faut pour présenter votre offre.</p>
+          </article>
+          <article class="service-card" tabindex="-1" role="button" aria-pressed="false" data-service-card
+            data-service-title="Mise en ligne"
+            data-service-summary="Nom de domaine, hébergement, formulaires et réglages techniques accompagnés jusqu’au lancement."
+            data-service-plan="Préparation technique, publication, réglages responsive et vérification avant lancement."
+            data-service-message="Je souhaite être accompagné pour la mise en ligne du site.">
+            <span class="service-icon service-icon-dark" aria-hidden="true"></span>
+            <span class="service-status">Ajouter au devis</span>
+            <h3>Mise en ligne</h3>
+            <p>Nom de domaine, hébergement, formulaires et réglages techniques accompagnés jusqu’au lancement.</p>
+          </article>
+        </div>
+
+        <aside class="service-detail" aria-live="polite">
+          <div class="service-visual" aria-hidden="true">
+            <div class="service-device">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <p class="detail-label">Service sélectionné</p>
+          <h3 id="service-detail-title">Design sur mesure</h3>
+          <p id="service-detail-summary">
+            Une identité claire, une page d'accueil soignée et une présentation qui inspire confiance.
+          </p>
+          <div class="detail-plan" id="service-detail-plan">
+            Maquette visuelle, direction couleur, hiérarchie de contenu et rendu mobile.
+          </div>
+          <button class="button button-primary service-detail-action" type="button" data-service-to-quote>
+            <span>Ajouter à votre devis</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="examples-gallery" id="exemples" aria-labelledby="gallery-title">
+      <div class="section-inner">
+        <div class="examples-heading">
+          <div>
+            <p class="section-kicker">Exemples de sites générés</p>
+            <h2 id="gallery-title">Des inspirations concrètes pour donner envie au client.</h2>
+            <p class="section-text">
+              Chaque exemple montre une ambiance possible pour un site vitrine : moderne, responsive
+              et pensé pour déclencher une prise de contact.
+            </p>
+          </div>
+
+          <div class="example-filters" aria-label="Filtrer les exemples">
+            <button class="filter-button is-active" type="button" data-filter="all">Tous</button>
+            <button class="filter-button" type="button" data-filter="commerce">Commerce</button>
+            <button class="filter-button" type="button" data-filter="service">Services</button>
+            <button class="filter-button" type="button" data-filter="premium">Premium</button>
+          </div>
+        </div>
+
+        <div class="service-chooser">
+          <div class="inspiration-experience" data-inspiration-experience aria-label="Balade 3D pour choisir une inspiration">
+            <canvas id="inspiration-scene" aria-hidden="true"></canvas>
+            <div class="inspiration-depth-fallback" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="inspiration-frame" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <em class="inspiration-scanline"></em>
+            </div>
+            <div class="inspiration-hud">
+              <div class="inspiration-hud-main">
+                <p class="choice-helper">Avancez dans la galerie avec les flèches, puis touchez l'inspiration qui vous parle.</p>
+                <div class="inspiration-readout" aria-hidden="true">
+                  <span class="inspiration-status"><i></i> Immersion active</span>
+                  <span class="inspiration-count"><b data-inspiration-index>01</b><u>/</u><b data-inspiration-total>06</b></span>
+                  <span class="inspiration-dest" data-inspiration-name>Maison Locale</span>
+                </div>
+              </div>
+              <div class="inspiration-controls" aria-label="Navigation des inspirations">
+                <button class="inspiration-nav" type="button" data-inspiration-prev aria-label="Inspiration précédente">←</button>
+                <button class="inspiration-nav" type="button" data-inspiration-next aria-label="Inspiration suivante">→</button>
+              </div>
+            </div>
+            <div class="inspiration-rail" aria-label="Choix des exemples">
+              <button class="inspiration-choice is-active" type="button" data-example-card data-category="commerce"
+                data-example-title="Maison Locale"
+                data-example-tag="Restaurant"
+                data-example-summary="Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement."
+                data-example-color="#f0a35e"
+                data-example-accent="#7bb69f">
+                <span>Restaurant</span>
+                <strong>Maison Locale</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service"
+                data-example-title="Atelier Bois"
+                data-example-tag="Artisan"
+                data-example-summary="Un site rassurant pour montrer les réalisations, les prestations et déclencher des demandes de devis."
+                data-example-color="#9a7a54"
+                data-example-accent="#79a68f">
+                <span>Artisan</span>
+                <strong>Atelier Bois</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service premium"
+                data-example-title="Studio Élan"
+                data-example-tag="Coach"
+                data-example-summary="Un univers élégant pour présenter une méthode, des accompagnements et des prises de rendez-vous."
+                data-example-color="#6e82f1"
+                data-example-accent="#35c7b7">
+                <span>Coach</span>
+                <strong>Studio Élan</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="premium"
+                data-example-title="Adresse Signature"
+                data-example-tag="Immobilier"
+                data-example-summary="Une vitrine premium pour présenter des biens, rassurer les vendeurs et générer des contacts qualifiés."
+                data-example-color="#3157d5"
+                data-example-accent="#d9a441">
+                <span>Immobilier</span>
+                <strong>Adresse Signature</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="commerce"
+                data-example-title="Maison Minérale"
+                data-example-tag="Boutique"
+                data-example-summary="Une présentation soignée pour mettre en avant une sélection, une histoire de marque et un contact direct."
+                data-example-color="#d6a34c"
+                data-example-accent="#78b7ac">
+                <span>Boutique</span>
+                <strong>Maison Minérale</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service premium"
+                data-example-title="Calme Studio"
+                data-example-tag="Bien-être"
+                data-example-summary="Une ambiance douce pour présenter les soins, les tarifs et simplifier la prise de contact."
+                data-example-color="#57bfa9"
+                data-example-accent="#8f7bd7">
+                <span>Bien-être</span>
+                <strong>Calme Studio</strong>
+              </button>
+            </div>
+          </div>
+
+          <aside class="service-detail" aria-live="polite">
+            <div class="service-visual" aria-hidden="true">
+              <div class="service-device">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <p class="detail-label">Inspiration sélectionnée</p>
+            <h3 id="example-detail-title">Maison Locale</h3>
+            <p id="example-detail-summary">
+              Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement.
+            </p>
+            <div class="detail-plan" id="example-detail-plan">
+              Style : Restaurant
+            </div>
+            <button class="button button-primary service-detail-action" type="button" id="example-detail-action">
+              <span>Ajouter aux inspirations</span>
+              <span class="button-icon" aria-hidden="true">→</span>
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="offers-preview" id="offres" aria-labelledby="offers-title">
+      <div class="section-inner offers-layout">
+        <div class="reveal-element" style="--reveal-delay:0ms">
+          <p class="section-kicker">Offres</p>
+          <h2 id="offers-title">Choisissez une base, je prépare ensuite un devis gratuit adapté.</h2>
+          <p class="section-text">
+            Le prix de départ est de 500 € pour un site vitrine complet. Il peut augmenter selon le nombre de pages,
+            les fonctionnalités ou l’accompagnement demandé. Pour de petites modifications sur un site existant,
+            un tarif plus léger peut être proposé après échange.
+          </p>
+        </div>
+
+        <div class="offer-list">
+          <article class="offer-card reveal-element" style="--reveal-delay:100ms"
+            data-offer-card="Site vitrine essentiel">
+            <span class="offer-badge">Essentiel</span>
+            <h3>Site vitrine essentiel</h3>
+            <p class="offer-price">À partir de 500 €</p>
+            <p>Une présence propre et rapide avec les pages indispensables pour présenter votre activité.</p>
+            <ul>
+              <li>Structure simple et efficace</li>
+              <li>Design responsive</li>
+              <li>Formulaire de contact</li>
+            </ul>
+            <button class="offer-action" type="button" data-offer="Site vitrine essentiel">Choisir cette offre</button>
+          </article>
+          <article class="offer-card offer-card-featured reveal-element" style="--reveal-delay:200ms"
+            data-offer-card="Vitrine complète">
+            <span class="offer-badge">Populaire</span>
+            <h3>Vitrine complète</h3>
+            <p class="offer-price">Sur devis adapté</p>
+            <p>Un site plus riche avec accompagnement contenu, avis clients, référencement local et suivi de lancement.
+            </p>
+            <ul>
+              <li>Pages plus détaillées</li>
+              <li>Optimisation SEO locale</li>
+              <li>Accompagnement au lancement</li>
+            </ul>
+            <button class="offer-action" type="button" data-offer="Vitrine complète">Choisir cette offre</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section" id="devis" aria-labelledby="quote-title">
+      <div class="section-inner quote-layout">
+        <div class="quote-copy reveal-element" style="--reveal-delay:0ms">
+          <div class="contact-hologram" data-contact-hologram>
+            <canvas id="contact-globe" aria-hidden="true"></canvas>
+            <div class="contact-hologram-hud" aria-hidden="true">
+              <span class="contact-holo-tag"><i></i> Réseau</span>
+              <span class="contact-holo-title">Connectons votre projet</span>
+            </div>
+          </div>
+          <p class="section-kicker">Devis gratuit</p>
+          <h2 id="quote-title">Expliquez-moi votre projet, je vous recontacte pour cadrer le site.</h2>
+          <p class="section-text">
+            Les créations de site vitrine démarrent à 500 €. Le devis est ajusté selon vos besoins exacts,
+            et les petites modifications peuvent faire l'objet d'une intervention moins coûteuse.
+          </p>
+
+          <address class="contact-card" aria-label="Coordonnées de contact">
+            <span>Coordonnées</span>
+            <strong>Timothé Bonneau</strong>
+            <a href="tel:0637696682">06 37 69 66 82</a>
+            <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+          </address>
+        </div>
+
+        <form class="quote-form" id="quote-form">
+          <div class="form-row">
+            <label for="name">Nom</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Votre nom" required>
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Votre numéro" required>
+          </div>
+
+          <div class="form-row form-row-wide">
+            <label for="business">Activité</label>
+            <input id="business" name="business" type="text" placeholder="Ex : artisan, restaurant, coach, boutique...">
+          </div>
+
+          <div class="form-row">
+            <label for="project-type">Type de projet</label>
+            <select id="project-type" name="project-type">
+              <option>Site vitrine essentiel</option>
+              <option>Vitrine complète</option>
+              <option>Refonte d'un site existant</option>
+              <option>Je ne sais pas encore</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="service-choice">Service prioritaire</label>
+            <select id="service-choice" name="service-choice">
+              <option>Design sur mesure</option>
+              <option>Pages essentielles</option>
+              <option>Mise en ligne</option>
+              <option>À définir ensemble</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="timing">Délai souhaité</label>
+            <select id="timing" name="timing">
+              <option>Dès que possible</option>
+              <option>Dans le mois</option>
+              <option>Dans les 2 à 3 mois</option>
+              <option>Je me renseigne seulement</option>
+            </select>
+          </div>
+
+          <div class="form-row form-row-wide selected-inspirations-row" id="selected-inspirations-row"
+            style="display: none;">
+            <label>Inspirations de design sélectionnées</label>
+            <div class="inspiration-tags-list" id="inspiration-tags-list"></div>
+          </div>
+
+          <div class="form-row form-row-wide">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"
+              placeholder="Présentez votre activité, les pages souhaitées ou ce que vous voulez améliorer."></textarea>
+          </div>
+
+          <button class="button button-primary form-submit" type="submit">
+            <span>Préparer votre devis gratuit</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </button>
+
+          <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="script.js"></script>
+  <script src="examples.js"></script>
+  <script src="gsap-animations.js"></script>
+  <script src="interactive-effects.js"></script>
+  <script src="futuristic-fx.js"></script>
+  <script src="three-contact.js"></script>
+</body>
+
+</html>

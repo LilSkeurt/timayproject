@@ -2905,3 +2905,260 @@ html.fx-pulse::after {
   .contact-holo-tag i { animation: none; }
 }
 
+/* ==========================================================================
+   WELCOME GATE — page d'accueil portail (index.html)
+   ========================================================================== */
+
+body.welcome-gate {
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 30%, #131c2c 0%, #090d16 58%, #04060c 100%);
+  color: #ffffff;
+}
+
+.welcome-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.welcome-stage:focus-visible {
+  outline: 2px solid var(--aqua);
+  outline-offset: -2px;
+}
+
+#welcome-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.welcome-stage.is-loaded #welcome-logo {
+  opacity: 1;
+}
+
+.welcome-fallback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: clamp(160px, 28vw, 260px);
+  height: clamp(160px, 28vw, 260px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.22), transparent 55%),
+    linear-gradient(135deg, rgba(49, 87, 213, 0.55), rgba(22, 184, 166, 0.4));
+  box-shadow: 0 0 80px 20px rgba(49, 87, 213, 0.35);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  animation: welcome-fallback-spin 7s linear infinite;
+}
+
+.welcome-fallback.is-visible {
+  display: flex;
+}
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(28px, 6vh, 64px) 24px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.welcome-header {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  max-width: 560px;
+}
+
+.welcome-eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.welcome-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: 0 0 40px rgba(93, 139, 255, 0.55), 0 0 90px rgba(47, 224, 200, 0.25);
+}
+
+.welcome-subtitle {
+  margin: 0;
+  max-width: 440px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.welcome-footer {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.welcome-progress {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+}
+
+.welcome-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.welcome-ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 4;
+}
+
+.welcome-ring-progress {
+  fill: none;
+  stroke: var(--aqua);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 320ms ease;
+  filter: drop-shadow(0 0 6px rgba(47, 224, 200, 0.65));
+}
+
+.welcome-progress-count {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.welcome-progress-count u {
+  opacity: 0.5;
+  text-decoration: none;
+  margin: 0 1px;
+}
+
+.welcome-hint {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.welcome-skip {
+  pointer-events: auto;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.welcome-skip:hover,
+.welcome-skip:focus-visible {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.welcome-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  clip-path: circle(0% at 50% 50%);
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0%, #bfe7ff 7%, #5fd6ff 16%, #3157d5 36%, #0c1622 70%, #04060c 100%);
+  transition: clip-path 1.15s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.welcome-portal.is-active {
+  clip-path: circle(150% at 50% 50%);
+}
+
+html.welcome-leaving .welcome-overlay {
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+html.welcome-leaving .welcome-stage {
+  filter: brightness(1.5) saturate(1.35);
+  transition: filter 380ms ease;
+}
+
+@keyframes welcome-fallback-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-fallback {
+    animation: none;
+  }
+
+  .welcome-portal {
+    clip-path: circle(150% at 50% 50%) !important;
+    opacity: 0;
+    transition: opacity 360ms ease;
+  }
+
+  .welcome-portal.is-active {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .welcome-title {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+  }
+
+  .welcome-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .welcome-overlay {
+    padding: 22px 18px;
+  }
+}
+

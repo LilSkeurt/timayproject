@@ -30,20 +30,28 @@ Puis ouvre :
 http://localhost:8080
 ```
 
+## Structure des pages
+
+- `index.html` : **page d'accueil portail** (Bienvenue + logo 3D ; on touche 5 fois le cœur lumineux pour ouvrir le passage vers le site).
+- `site.html` : **le site principal** (contenu, textes, sections, formulaire de devis). C'est ici qu'on modifie le contenu.
+- `exemples.html` : page portfolio avec des exemples de sites vitrines générés.
+
 ## Fichiers importants
 
-- `index.html` : contenu de la page, textes, sections, formulaire.
-- `exemples.html` : page portfolio avec des exemples de sites vitrines générés.
-- `styles.css` : couleurs, mise en page, responsive, design.
+- `welcome-gate.js` : moteur 3D de la page d'accueil portail (logo `assets/av-logo.glb`, rotation souris, passage dimensionnel).
+- `styles.css` : couleurs, mise en page, responsive, design (inclut le bloc « WELCOME GATE » en fin de fichier).
 - `script.js` : interactions des boutons, sélection des offres, message du formulaire.
-- `examples.js` : filtres et effets 3D de la page exemples.
-- `three-scene.js` : scène Three.js du haut de page.
+- `examples.js` : balade 3D immersive du choix d'inspiration + filtres.
+- `three-scene.js` : scène Three.js du haut de page (réacteur cristallin).
+- `three-contact.js` : hologramme « réseau » de la section contact.
+- `futuristic-fx.js` : effets futuristes du site (intro, cadres HUD, halo réactif).
 - `gsap-animations.js` : animations GSAP et effets au scroll.
+- `assets/av-logo.glb` : logo 3D « AV » modélisé dans Blender.
 - `assets/hero-vitrine.png` : image utilisée dans le haut de page.
 
 ## Modifier les textes
 
-Pour changer un texte affiché sur le site, ouvre `index.html`.
+Pour changer un texte affiché sur le site, ouvre `site.html` (le contenu n'est plus dans `index.html`, qui est devenu la page d'accueil portail).
 
 Exemples utiles :
 
@@ -70,7 +78,7 @@ En changeant ces valeurs, tu peux modifier l'identité visuelle du site sans che
 
 Le tarif de départ est actuellement indiqué à `500 €`.
 
-Pour le changer, cherche `500` dans `index.html`.
+Pour le changer, cherche `500` dans `site.html`.
 
 ## Email
 
