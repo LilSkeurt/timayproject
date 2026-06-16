@@ -11,6 +11,15 @@
     "[data-offer-card]",
     ".filter-button"
   ].join(",");
+  const cursorHoverSelector = [
+    "button",
+    "[role='button']",
+    "[data-service-orb]",
+    "[data-service-card]",
+    "[data-example-card]",
+    "[data-offer-card]",
+    ".filter-button"
+  ].join(",");
 
   let audioContext = null;
   let masterGain = null;
@@ -277,7 +286,7 @@
 
     function updateHoverState(x, y) {
       const element = document.elementFromPoint(x, y);
-      const target = element?.closest?.(interactiveSelector);
+      const target = element?.closest?.(cursorHoverSelector);
       cursor.classList.toggle("is-hover", Boolean(target));
       dot.classList.toggle("is-hover", Boolean(target));
 

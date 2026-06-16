@@ -1,14 +1,13 @@
 /* ==========================================================================
-   three-scene.js — Logo AV interactif au hero (charge le GLB de Blender).
+   three-av-logo.js — Charge et affiche le cristal AV en interactif.
+   L'utilisateur fait tourner le logo à la souris (réactif + fluidité).
    ========================================================================== */
 
 (function () {
   const canvas = document.getElementById("next-gen-scene");
   const stage = document.querySelector(".three-stage");
 
-  if (!canvas || !window.THREE) {
-    return;
-  }
+  if (!canvas || !window.THREE) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const isMobile = window.matchMedia("(max-width: 720px)").matches;
@@ -45,7 +44,7 @@
   let logoGroup = null;
   let gltfScene = null;
 
-  // Charger le GLB du logo AV
+  // Charger le GLB
   const loader = new THREE.GLTFLoader();
   loader.load("assets/av-logo.glb", (gltf) => {
     gltfScene = gltf.scene;
@@ -53,15 +52,15 @@
     logoGroup.add(gltfScene);
     root.add(logoGroup);
 
-    // Appliquer des matériaux lumineux futuristes
+    // Appliquer des matériaux lumineux
     gltfScene.traverse((node) => {
       if (node.isMesh) {
         node.material = new THREE.MeshStandardMaterial({
           color: 0x3157d5,
           emissive: 0x5d8bff,
-          emissiveIntensity: 0.45,
-          roughness: 0.26,
-          metalness: 0.24
+          emissiveIntensity: 0.4,
+          roughness: 0.28,
+          metalness: 0.2
         });
         node.castShadow = false;
         node.receiveShadow = false;
@@ -69,13 +68,6 @@
     });
 
     stage.classList.add("is-loaded");
-
-    // Animation d'entrée
-    if (window.gsap && !reducedMotion) {
-      gsap.from(logoGroup.position, { y: -0.8, z: -2, duration: 1.6, ease: "power3.out" });
-      gsap.from(logoGroup.scale, { x: 0.6, y: 0.6, z: 0.6, duration: 1.6, ease: "power3.out" });
-      gsap.from(logoGroup.rotation, { y: -1.8, z: 0.4, duration: 1.8, ease: "power3.out" });
-    }
   });
 
   function resize() {
@@ -92,17 +84,16 @@
     const time = clock.getElapsedTime();
 
     if (logoGroup) {
-      // Interaction fluide à la souris
-      pointer.targetX += (pointer.x - pointer.targetX) * 0.08;
-      pointer.targetY += (pointer.y - pointer.targetY) * 0.08;
+      // Interaction souris fluide
+      pointer.targetX += (pointer.x - pointer.targetX) * 0.06;
+      pointer.targetY += (pointer.y - pointer.targetY) * 0.06;
 
-      logoGroup.rotation.y = pointer.targetX * 0.85 + (reducedMotion ? 0 : time * 0.18);
-      logoGroup.rotation.x = pointer.targetY * 0.52 + (reducedMotion ? 0 : Math.sin(time * 0.14) * 0.09);
+      logoGroup.rotation.y = pointer.targetX * 0.8 + (reducedMotion ? 0 : time * 0.2);
+      logoGroup.rotation.x = pointer.targetY * 0.5 + (reducedMotion ? 0 : Math.sin(time * 0.15) * 0.08);
 
-      // Battement subtil (l'émotion)
+      // Battement subtil
       if (!reducedMotion) {
-        logoGroup.position.y = Math.sin(time * 1.1) * 0.14;
-        logoGroup.position.z = Math.cos(time * 0.8) * 0.08;
+        logoGroup.position.y = Math.sin(time * 1.2) * 0.12;
       }
     }
 

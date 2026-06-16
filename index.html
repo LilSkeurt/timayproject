@@ -105,6 +105,8 @@
         <h2 id="intro-title">Composez votre site avec les services qui comptent vraiment.</h2>
       </div>
 
+      <p class="choice-helper service-choice-helper">Appuyez sur une option pour changer le service affiché.</p>
+
       <div class="service-orbit" aria-label="Choix rapide des services">
         <button class="service-orb is-active" type="button" data-service-orb="Design sur mesure">
           <span class="orb-core"></span>
@@ -200,114 +202,87 @@
         </div>
 
         <div class="service-chooser">
-          <div class="example-grid" aria-label="Choix des exemples">
-            <article class="example-card" data-example-card data-category="commerce">
-              <div class="example-preview preview-restaurant" aria-hidden="true">
-                <div class="browser-bar"></div>
-                <div class="mock-hero"></div>
-                <div class="mock-lines">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div class="mock-row">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="example-content">
-                <span class="example-tag">Restaurant</span>
-                <h3>Maison Locale</h3>
-                <p>Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement.</p>
-              </div>
-            </article>
-
-            <article class="example-card" data-example-card data-category="service">
-              <div class="example-preview preview-artisan" aria-hidden="true">
-                <div class="browser-bar"></div>
-                <div class="mock-columns">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div class="mock-lines">
-                  <span></span>
-                  <span></span>
+          <div class="inspiration-experience" data-inspiration-experience aria-label="Balade 3D pour choisir une inspiration">
+            <canvas id="inspiration-scene" aria-hidden="true"></canvas>
+            <div class="inspiration-depth-fallback" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="inspiration-frame" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <em class="inspiration-scanline"></em>
+            </div>
+            <div class="inspiration-hud">
+              <div class="inspiration-hud-main">
+                <p class="choice-helper">Avancez dans la galerie avec les flèches, puis touchez l'inspiration qui vous parle.</p>
+                <div class="inspiration-readout" aria-hidden="true">
+                  <span class="inspiration-status"><i></i> Immersion active</span>
+                  <span class="inspiration-count"><b data-inspiration-index>01</b><u>/</u><b data-inspiration-total>06</b></span>
+                  <span class="inspiration-dest" data-inspiration-name>Maison Locale</span>
                 </div>
               </div>
-              <div class="example-content">
-                <span class="example-tag">Artisan</span>
-                <h3>Atelier Bois</h3>
-                <p>Un site rassurant pour montrer les réalisations, les prestations et déclencher des demandes de devis.</p>
+              <div class="inspiration-controls" aria-label="Navigation des inspirations">
+                <button class="inspiration-nav" type="button" data-inspiration-prev aria-label="Inspiration précédente">←</button>
+                <button class="inspiration-nav" type="button" data-inspiration-next aria-label="Inspiration suivante">→</button>
               </div>
-            </article>
-
-            <article class="example-card" data-example-card data-category="service premium">
-              <div class="example-preview preview-coach" aria-hidden="true">
-                <div class="browser-bar"></div>
-                <div class="mock-circle"></div>
-                <div class="mock-lines">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="example-content">
-                <span class="example-tag">Coach</span>
-                <h3>Studio Élan</h3>
-                <p>Un univers élégant pour présenter une méthode, des accompagnements et des prises de rendez-vous.</p>
-              </div>
-            </article>
-
-            <article class="example-card" data-example-card data-category="premium">
-              <div class="example-preview preview-immo" aria-hidden="true">
-                <div class="browser-bar"></div>
-                <div class="mock-hero"></div>
-                <div class="mock-stat-row">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="example-content">
-                <span class="example-tag">Immobilier</span>
-                <h3>Adresse Signature</h3>
-                <p>Une vitrine premium pour présenter des biens, rassurer les vendeurs et générer des contacts qualifiés.</p>
-              </div>
-            </article>
-
-            <article class="example-card" data-example-card data-category="commerce">
-              <div class="example-preview preview-boutique" aria-hidden="true">
-                <div class="browser-bar"></div>
-                <div class="mock-product-grid">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="example-content">
-                <span class="example-tag">Boutique</span>
-                <h3>Maison Minérale</h3>
-                <p>Une présentation soignée pour mettre en avant une sélection, une histoire de marque et un contact direct.</p>
-              </div>
-            </article>
-
-            <article class="example-card" data-example-card data-category="service premium">
-              <div class="example-preview preview-wellness" aria-hidden="true">
-                <div class="browser-bar"></div>
-                <div class="mock-wave"></div>
-                <div class="mock-lines">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="example-content">
-                <span class="example-tag">Bien-être</span>
-                <h3>Calme Studio</h3>
-                <p>Une ambiance douce pour présenter les soins, les tarifs et simplifier la prise de contact.</p>
-              </div>
-            </article>
+            </div>
+            <div class="inspiration-rail" aria-label="Choix des exemples">
+              <button class="inspiration-choice is-active" type="button" data-example-card data-category="commerce"
+                data-example-title="Maison Locale"
+                data-example-tag="Restaurant"
+                data-example-summary="Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement."
+                data-example-color="#f0a35e"
+                data-example-accent="#7bb69f">
+                <span>Restaurant</span>
+                <strong>Maison Locale</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service"
+                data-example-title="Atelier Bois"
+                data-example-tag="Artisan"
+                data-example-summary="Un site rassurant pour montrer les réalisations, les prestations et déclencher des demandes de devis."
+                data-example-color="#9a7a54"
+                data-example-accent="#79a68f">
+                <span>Artisan</span>
+                <strong>Atelier Bois</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service premium"
+                data-example-title="Studio Élan"
+                data-example-tag="Coach"
+                data-example-summary="Un univers élégant pour présenter une méthode, des accompagnements et des prises de rendez-vous."
+                data-example-color="#6e82f1"
+                data-example-accent="#35c7b7">
+                <span>Coach</span>
+                <strong>Studio Élan</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="premium"
+                data-example-title="Adresse Signature"
+                data-example-tag="Immobilier"
+                data-example-summary="Une vitrine premium pour présenter des biens, rassurer les vendeurs et générer des contacts qualifiés."
+                data-example-color="#3157d5"
+                data-example-accent="#d9a441">
+                <span>Immobilier</span>
+                <strong>Adresse Signature</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="commerce"
+                data-example-title="Maison Minérale"
+                data-example-tag="Boutique"
+                data-example-summary="Une présentation soignée pour mettre en avant une sélection, une histoire de marque et un contact direct."
+                data-example-color="#d6a34c"
+                data-example-accent="#78b7ac">
+                <span>Boutique</span>
+                <strong>Maison Minérale</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service premium"
+                data-example-title="Calme Studio"
+                data-example-tag="Bien-être"
+                data-example-summary="Une ambiance douce pour présenter les soins, les tarifs et simplifier la prise de contact."
+                data-example-color="#57bfa9"
+                data-example-accent="#8f7bd7">
+                <span>Bien-être</span>
+                <strong>Calme Studio</strong>
+              </button>
+            </div>
           </div>
 
           <aside class="service-detail" aria-live="polite">
@@ -383,6 +358,13 @@
     <section class="quote-section" id="devis" aria-labelledby="quote-title">
       <div class="section-inner quote-layout">
         <div class="quote-copy reveal-element" style="--reveal-delay:0ms">
+          <div class="contact-hologram" data-contact-hologram>
+            <canvas id="contact-globe" aria-hidden="true"></canvas>
+            <div class="contact-hologram-hud" aria-hidden="true">
+              <span class="contact-holo-tag"><i></i> Réseau</span>
+              <span class="contact-holo-title">Connectons votre projet</span>
+            </div>
+          </div>
           <p class="section-kicker">Devis gratuit</p>
           <h2 id="quote-title">Expliquez-moi votre projet, je vous recontacte pour cadrer le site.</h2>
           <p class="section-text">
@@ -474,6 +456,8 @@
   <script src="examples.js"></script>
   <script src="gsap-animations.js"></script>
   <script src="interactive-effects.js"></script>
+  <script src="futuristic-fx.js"></script>
+  <script src="three-contact.js"></script>
 </body>
 
 </html>
