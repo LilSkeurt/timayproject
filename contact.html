@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Atelier Vitrine</title>
+  <meta name="description" content="Expliquez votre projet de site vitrine, Timothé Bonneau vous recontacte pour préparer un devis gratuit et adapté.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="px" data-px aria-hidden="true">
+    <div class="px-core"><span class="px-ring"></span><span class="px-mark">AV</span></div>
+  </div>
+
+  <header class="site-header" aria-label="Navigation principale">
+    <a class="brand" href="accueil.html" aria-label="Atelier Vitrine">
+      <span class="brand-mark" aria-hidden="true">AV</span>
+      <span>Atelier Vitrine</span>
+    </a>
+    <nav class="main-nav" aria-label="Menu">
+      <a href="accueil.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="exemples.html">Exemples</a>
+      <a href="offres.html">Offres</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="nav-action" href="contact.html">Devis gratuit</a>
+  </header>
+
+  <main>
+    <section class="page-hero" aria-labelledby="quote-title">
+      <div class="section-inner" data-reveal>
+        <p class="section-kicker">Devis gratuit</p>
+        <h1 id="quote-title">Expliquez-moi votre projet, je vous recontacte pour cadrer le site.</h1>
+        <p>
+          Les créations de site vitrine démarrent à 500 €. Le devis est ajusté selon vos besoins exacts,
+          et les petites modifications peuvent faire l'objet d'une intervention moins coûteuse.
+        </p>
+      </div>
+    </section>
+
+    <section class="quote-section" id="devis" aria-label="Formulaire de devis">
+      <div class="section-inner quote-layout">
+        <div class="quote-copy">
+          <div class="contact-hologram" data-contact-hologram>
+            <canvas id="contact-globe" aria-hidden="true"></canvas>
+            <div class="contact-hologram-hud" aria-hidden="true">
+              <span class="contact-holo-tag"><i></i> Réseau</span>
+              <span class="contact-holo-title">Connectons votre projet</span>
+            </div>
+          </div>
+
+          <address class="contact-card" aria-label="Coordonnées de contact">
+            <span>Coordonnées</span>
+            <strong>Timothé Bonneau</strong>
+            <a href="tel:0637696682">06 37 69 66 82</a>
+            <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+          </address>
+        </div>
+
+        <form class="quote-form" id="quote-form">
+          <div class="form-row">
+            <label for="name">Nom</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Votre nom" required>
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Votre numéro" required>
+          </div>
+
+          <div class="form-row form-row-wide">
+            <label for="business">Activité</label>
+            <input id="business" name="business" type="text" placeholder="Ex : artisan, restaurant, coach, boutique...">
+          </div>
+
+          <div class="form-row">
+            <label for="project-type">Type de projet</label>
+            <select id="project-type" name="project-type">
+              <option>Site vitrine essentiel</option>
+              <option>Vitrine complète</option>
+              <option>Refonte d'un site existant</option>
+              <option>Je ne sais pas encore</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="service-choice">Service prioritaire</label>
+            <select id="service-choice" name="service-choice">
+              <option>Design sur mesure</option>
+              <option>Pages essentielles</option>
+              <option>Mise en ligne</option>
+              <option>À définir ensemble</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="timing">Délai souhaité</label>
+            <select id="timing" name="timing">
+              <option>Dès que possible</option>
+              <option>Dans le mois</option>
+              <option>Dans les 2 à 3 mois</option>
+              <option>Je me renseigne seulement</option>
+            </select>
+          </div>
+
+          <div class="form-row form-row-wide selected-inspirations-row" id="selected-inspirations-row"
+            style="display: none;">
+            <label>Inspirations de design sélectionnées</label>
+            <div class="inspiration-tags-list" id="inspiration-tags-list"></div>
+          </div>
+
+          <div class="form-row form-row-wide">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"
+              placeholder="Présentez votre activité, les pages souhaitées ou ce que vous voulez améliorer."></textarea>
+          </div>
+
+          <button class="button button-primary form-submit" type="submit">
+            <span>Préparer votre devis gratuit</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </button>
+
+          <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-brand"><span class="brand-mark" aria-hidden="true">AV</span> Atelier Vitrine</span>
+        <p class="footer-tagline">Sites vitrine premium pour indépendants, artisans et petites entreprises.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <nav class="footer-nav" aria-label="Pied de page">
+          <a href="accueil.html">Accueil</a>
+          <a href="services.html">Services</a>
+          <a href="exemples.html">Exemples</a>
+          <a href="offres.html">Offres</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <nav class="footer-nav">
+          <span style="color:rgba(255,255,255,0.82)">Timothé Bonneau</span>
+          <a href="tel:0637696682">06 37 69 66 82</a>
+          <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+        </nav>
+      </div>
+    </div>
+    <p class="footer-legal">© 2026 Atelier Vitrine — Création de sites vitrine.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="three-contact.js"></script>
+  <script src="script.js"></script>
+  <script src="examples.js"></script>
+  <script src="gsap-animations.js"></script>
+  <script src="interactive-effects.js"></script>
+  <script src="futuristic-fx.js"></script>
+  <script src="motion.js"></script>
+  <script src="transitions.js"></script>
+</body>
+
+</html>

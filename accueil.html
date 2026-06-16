@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Vitrine — Sites vitrine premium</title>
+  <meta name="description" content="Atelier Vitrine conçoit des sites internet premium pour indépendants, artisans et petites entreprises. Design, expérience 3D et accompagnement jusqu'au lancement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="px" data-px aria-hidden="true">
+    <div class="px-core"><span class="px-ring"></span><span class="px-mark">AV</span></div>
+  </div>
+
+  <header class="site-header" aria-label="Navigation principale">
+    <a class="brand" href="accueil.html" aria-label="Atelier Vitrine">
+      <span class="brand-mark" aria-hidden="true">AV</span>
+      <span>Atelier Vitrine</span>
+    </a>
+    <nav class="main-nav" aria-label="Menu">
+      <a href="accueil.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="exemples.html">Exemples</a>
+      <a href="offres.html">Offres</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="nav-action" href="contact.html">Devis gratuit</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="sphere-layer" aria-hidden="true">
+        <span class="sphere sphere-primary"></span>
+        <span class="sphere sphere-secondary"></span>
+        <span class="sphere sphere-accent"></span>
+      </div>
+      <div class="three-stage" aria-hidden="true">
+        <canvas id="next-gen-scene"></canvas>
+        <div class="three-fallback">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="hero-inner">
+        <p class="eyebrow reveal-element" style="--reveal-delay:0ms">Sites vitrine de dernière génération</p>
+        <h1 id="hero-title" class="hero-title-animated">Votre vitrine en ligne, claire, élégante et prête à trouver des
+          clients.</h1>
+        <p class="hero-copy reveal-element" style="--reveal-delay:150ms">
+          Je conçois des sites internet premium pour indépendants, artisans et petites entreprises :
+          direction artistique, expérience mobile, animations 3D et accompagnement jusqu'au lancement.
+        </p>
+
+        <div class="price-highlight reveal-element" aria-label="Tarif de départ" style="--reveal-delay:250ms">
+          <strong>À partir de 500 €</strong>
+          <span>Le tarif évolue selon les besoins. Pour de simples petites modifications, une intervention plus légère
+            peut être proposée.</span>
+        </div>
+
+        <div class="hero-actions reveal-element" aria-label="Actions principales" style="--reveal-delay:300ms">
+          <a class="button button-primary" href="contact.html" data-scroll="devis" data-project="Vitrine complète">
+            <span>Parler de votre projet</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </a>
+          <a class="button button-secondary" href="offres.html">
+            <span>Voir les offres</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </a>
+          <a class="button button-ghost" href="exemples.html">
+            <span>Voir des exemples</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hero-contact" aria-label="Coordonnées">
+          <span>Timothé Bonneau</span>
+          <a href="tel:0637696682">06 37 69 66 82</a>
+          <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+        </div>
+
+        <dl class="hero-proof reveal-element" aria-label="Points forts" style="--reveal-delay:420ms">
+          <div>
+            <dt data-count-up="10" data-suffix=" jours">10 jours</dt>
+            <dd>pour une première version</dd>
+          </div>
+          <div>
+            <dt data-count-up="100" data-suffix="%">100%</dt>
+            <dd>adapté mobile</dd>
+          </div>
+          <div>
+            <dt>SEO</dt>
+            <dd>bases optimisées</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="intro" aria-labelledby="explore-title">
+      <div class="intro-heading" data-reveal>
+        <p class="section-kicker">Explorez</p>
+        <h2 id="explore-title">Entrez dans chaque univers du projet.</h2>
+      </div>
+
+      <div class="portal-teasers" data-reveal-group aria-label="Accès aux pages">
+        <a class="portal-teaser" href="services.html">
+          <span class="teaser-index">01 — Services</span>
+          <span>
+            <h3>Composez votre site</h3>
+            <p>Design sur mesure, pages essentielles, mise en ligne : choisissez ce qui compte vraiment.</p>
+          </span>
+          <span class="teaser-go">Découvrir →</span>
+        </a>
+        <a class="portal-teaser" href="exemples.html">
+          <span class="teaser-index">02 — Exemples</span>
+          <span>
+            <h3>Baladez-vous en 3D</h3>
+            <p>Une galerie immersive pour choisir l'inspiration qui vous parle.</p>
+          </span>
+          <span class="teaser-go">Explorer →</span>
+        </a>
+        <a class="portal-teaser" href="offres.html">
+          <span class="teaser-index">03 — Offres</span>
+          <span>
+            <h3>À partir de 500 €</h3>
+            <p>Choisissez une base, je prépare ensuite un devis gratuit adapté.</p>
+          </span>
+          <span class="teaser-go">Comparer →</span>
+        </a>
+        <a class="portal-teaser" href="contact.html">
+          <span class="teaser-index">04 — Contact</span>
+          <span>
+            <h3>Parlons de votre projet</h3>
+            <p>Expliquez-moi votre activité, je vous recontacte pour cadrer le site.</p>
+          </span>
+          <span class="teaser-go">Demander un devis →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="offers-preview" aria-labelledby="home-cta-title">
+      <div class="section-inner offers-layout">
+        <div data-reveal>
+          <p class="section-kicker">Prêt à démarrer</p>
+          <h2 id="home-cta-title">Une première version de votre site en 10 jours.</h2>
+          <p class="section-text">
+            Dites-moi votre activité et ce que vous voulez transmettre. Je m'occupe du reste :
+            design, structure, mobile et mise en ligne.
+          </p>
+          <div class="hero-actions" style="margin-top:18px">
+            <a class="button button-primary" href="contact.html" data-scroll="devis" data-project="Vitrine complète">
+              <span>Démarrer mon projet</span>
+              <span class="button-icon" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-brand"><span class="brand-mark" aria-hidden="true">AV</span> Atelier Vitrine</span>
+        <p class="footer-tagline">Sites vitrine premium pour indépendants, artisans et petites entreprises.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <nav class="footer-nav" aria-label="Pied de page">
+          <a href="accueil.html">Accueil</a>
+          <a href="services.html">Services</a>
+          <a href="exemples.html">Exemples</a>
+          <a href="offres.html">Offres</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <nav class="footer-nav">
+          <span style="color:rgba(255,255,255,0.82)">Timothé Bonneau</span>
+          <a href="tel:0637696682">06 37 69 66 82</a>
+          <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+        </nav>
+      </div>
+    </div>
+    <p class="footer-legal">© 2026 Atelier Vitrine — Création de sites vitrine.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="three-contact.js"></script>
+  <script src="script.js"></script>
+  <script src="examples.js"></script>
+  <script src="gsap-animations.js"></script>
+  <script src="interactive-effects.js"></script>
+  <script src="futuristic-fx.js"></script>
+  <script src="motion.js"></script>
+  <script src="transitions.js"></script>
+</body>
+
+</html>
