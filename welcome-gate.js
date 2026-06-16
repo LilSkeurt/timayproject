@@ -1,7 +1,7 @@
 /* ==========================================================================
    welcome-gate.js — Page d'accueil portail.
    Le logo AV (Blender) flotte en grand, se fait tourner à la souris,
-   et après N touches ouvre un passage dimensionnel vers site.html.
+   et après N touches ouvre un passage dimensionnel vers accueil.html.
    ========================================================================== */
 
 (function () {
@@ -15,17 +15,18 @@
 
   if (!stage || !portal) return;
 
-  // On a déjà vécu l'intro ici : on évite que site.html rejoue son écran
+  // On a déjà vécu l'intro ici : on évite que la page suivante rejoue son écran
   // d'initialisation juste après (même clé de session que futuristic-fx.js).
   try { sessionStorage.setItem("fx_boot_seen", "1"); } catch (error) { /* noop */ }
 
   const REQUIRED_TAPS = Number(stage.dataset.welcomeRequired) || 5;
-  const DESTINATION = "site.html";
+  const DESTINATION = "accueil.html";
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const RING_CIRCUMFERENCE = 2 * Math.PI * 54;
 
   let taps = 0;
   let transitioning = false;
+  const warpState = { v: 0 };
 
   if (ringProgress) {
     ringProgress.style.strokeDasharray = `${RING_CIRCUMFERENCE}`;
@@ -87,8 +88,18 @@
     transitioning = true;
     stage.disabled = true;
     document.documentElement.classList.add("welcome-leaving");
-    portal.classList.add("is-active");
-    setTimeout(goToSite, reducedMotion ? 380 : 1450);
+
+    if (reducedMotion || !window.gsap) {
+      portal.classList.add("is-active");
+      setTimeout(goToSite, reducedMotion ? 360 : 900);
+      return;
+    }
+
+    // Saut dans l'hyperespace : on fonce dans le logo, tout s'illumine,
+    // puis le voile de lumière s'ouvre.
+    const tl = gsap.timeline({ onComplete: goToSite });
+    tl.to(warpState, { v: 1, duration: 1.15, ease: "power2.in" }, 0);
+    tl.add(() => portal.classList.add("is-active"), 0.55);
   }
 
   let pulseT = 0;
@@ -299,9 +310,11 @@
   }
 
   const clock = new THREE.Clock();
+  let warpSpinExtra = 0;
 
   function animate() {
     const time = clock.getElapsedTime();
+    const w = warpState.v;
 
     dragRotation.x += (targetRotation.x - dragRotation.x) * 0.12;
     dragRotation.y += (targetRotation.y - dragRotation.y) * 0.12;
@@ -313,22 +326,30 @@
       rotationVelocity.y *= 0.94;
     }
 
+    warpSpinExtra += w * 0.09;
     const idle = reducedMotion ? 0 : time * 0.12;
-    logoGroup.rotation.y = dragRotation.y + idle;
+    logoGroup.rotation.y = dragRotation.y + idle + warpSpinExtra;
     logoGroup.rotation.x = dragRotation.x;
 
     if (!reducedMotion) {
       logoGroup.position.y = Math.sin(time * 0.9) * 0.12;
       halo.rotation.z += 0.004;
-      particles.rotation.y += 0.0006;
+      particles.rotation.y += 0.0006 + w * 0.05;
     }
+
+    // Saut dans l'hyperespace : on fonce dans le logo, tout converge et s'illumine.
+    camera.position.z = 9 - w * 6.6;
+    halo.scale.setScalar(1 + w * 1.8);
+    halo.material.opacity = 0.5 * (1 - w);
+    particles.scale.setScalar(1 - w * 0.6);
+    particles.material.opacity = 0.55 + w * 0.4;
 
     pulseT *= 0.9;
     if (logoMesh) {
-      const beat = (logoMesh.userData.baseScale || 1) * (1 + pulseT * 0.18);
+      const beat = (logoMesh.userData.baseScale || 1) * (1 + pulseT * 0.18 + w * 0.55);
       logoMesh.scale.setScalar(beat);
     }
-    rim.intensity = 1.6 + pulseT * 2.2;
+    rim.intensity = 1.6 + pulseT * 2.2 + w * 7;
 
     renderer.render(scene, camera);
     requestAnimationFrame(animate);

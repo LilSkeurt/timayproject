@@ -32,33 +32,40 @@ http://localhost:8080
 
 ## Structure des pages
 
+Le site est en **plusieurs pages**, reliées par des **transitions « warp »** (l'arrivée est gérée en CSS, le départ en JS) :
+
 - `index.html` : **page d'accueil portail** (Bienvenue + logo 3D ; on touche 5 fois le cœur lumineux pour ouvrir le passage vers le site).
-- `site.html` : **le site principal** (contenu, textes, sections, formulaire de devis). C'est ici qu'on modifie le contenu.
-- `exemples.html` : page portfolio avec des exemples de sites vitrines générés.
+- `accueil.html` : page d'accueil du site (hero réacteur cristallin + accès aux autres pages).
+- `services.html` : les services (design, pages, mise en ligne).
+- `exemples.html` : galerie 3D immersive pour choisir une inspiration.
+- `offres.html` : les offres et tarifs.
+- `contact.html` : formulaire de devis + hologramme « réseau ».
+
+Pour modifier un texte, ouvre directement la page concernée (ex. les offres → `offres.html`, le formulaire → `contact.html`).
 
 ## Fichiers importants
 
-- `welcome-gate.js` : moteur 3D de la page d'accueil portail (logo `assets/av-logo.glb`, rotation souris, passage dimensionnel).
-- `styles.css` : couleurs, mise en page, responsive, design (inclut le bloc « WELCOME GATE » en fin de fichier).
-- `script.js` : interactions des boutons, sélection des offres, message du formulaire.
+- `welcome-gate.js` : moteur 3D du portail (logo `assets/av-logo.glb`, rotation souris, passage dimensionnel).
+- `transitions.js` : transitions « warp hyperspace » entre les pages.
+- `motion.js` : défilement fluide (Lenis) + révélations au scroll (GSAP ScrollTrigger) + lien de nav actif.
+- `styles.css` : couleurs, mise en page, responsive, design (blocs « WELCOME GATE » et « MULTI-PAGES » en fin de fichier).
+- `script.js` : sélection services/offres, formulaire, report de l'intention entre pages (sessionStorage).
 - `examples.js` : balade 3D immersive du choix d'inspiration + filtres.
-- `three-scene.js` : scène Three.js du haut de page (réacteur cristallin).
-- `three-contact.js` : hologramme « réseau » de la section contact.
-- `futuristic-fx.js` : effets futuristes du site (intro, cadres HUD, halo réactif).
-- `gsap-animations.js` : animations GSAP et effets au scroll.
+- `three-scene.js` : réacteur cristallin du hero (accueil).
+- `three-contact.js` : hologramme « réseau » de la page contact.
+- `futuristic-fx.js` : effets futuristes (cadres HUD, halo réactif, titres holographiques).
+- `gsap-animations.js` : animations GSAP, count-up et barre de progression.
 - `assets/av-logo.glb` : logo 3D « AV » modélisé dans Blender.
-- `assets/hero-vitrine.png` : image utilisée dans le haut de page.
+- `assets/hero-vitrine.png` : image utilisée dans le hero.
 
 ## Modifier les textes
 
-Pour changer un texte affiché sur le site, ouvre `site.html` (le contenu n'est plus dans `index.html`, qui est devenu la page d'accueil portail).
+Chaque page contient son propre contenu. Repères utiles :
 
-Exemples utiles :
-
-- Le titre principal est dans la section `.hero`.
-- Les offres sont dans la section `#offres`.
-- Le formulaire est dans la section `#devis`.
-- Les coordonnées sont dans `.hero-contact` et `.contact-card`.
+- Le hero et le titre principal : `accueil.html` (section `.hero`).
+- Les offres et le tarif `500 €` : `offres.html`.
+- Le formulaire et les coordonnées : `contact.html`.
+- La barre de navigation et le pied de page sont répétés en haut/bas de chaque page (`.site-header` / `.site-footer`).
 
 ## Modifier les couleurs
 
@@ -78,7 +85,7 @@ En changeant ces valeurs, tu peux modifier l'identité visuelle du site sans che
 
 Le tarif de départ est actuellement indiqué à `500 €`.
 
-Pour le changer, cherche `500` dans `site.html`.
+Pour le changer, cherche `500` dans `offres.html` (et dans `accueil.html` pour le hero).
 
 ## Email
 

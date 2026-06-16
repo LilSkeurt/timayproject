@@ -1,98 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exemples de sites vitrine - Atelier Vitrine</title>
+  <title>Exemples — Atelier Vitrine</title>
+  <meta name="description" content="Baladez-vous dans une galerie 3D immersive et choisissez l'inspiration de site vitrine qui vous parle.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="examples-page">
+
+<body>
+  <div class="px" data-px aria-hidden="true">
+    <div class="px-core"><span class="px-ring"></span><span class="px-mark">AV</span></div>
+  </div>
+
   <header class="site-header" aria-label="Navigation principale">
-    <a class="brand" href="site.html" aria-label="Atelier Vitrine">
+    <a class="brand" href="accueil.html" aria-label="Atelier Vitrine">
       <span class="brand-mark" aria-hidden="true">AV</span>
       <span>Atelier Vitrine</span>
     </a>
-
     <nav class="main-nav" aria-label="Menu">
-      <a href="site.html#services">Services</a>
-      <a href="exemples.html" aria-current="page">Exemples</a>
-      <a href="site.html#offres">Offres</a>
-      <a href="site.html#devis">Contact</a>
+      <a href="accueil.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="exemples.html">Exemples</a>
+      <a href="offres.html">Offres</a>
+      <a href="contact.html">Contact</a>
     </nav>
-
-    <a class="nav-action" href="site.html#devis">Devis gratuit</a>
+    <a class="nav-action" href="contact.html">Devis gratuit</a>
   </header>
 
   <main>
-    <section class="hero examples-hero" aria-labelledby="examples-title">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="sphere-layer" aria-hidden="true">
-        <span class="sphere sphere-primary"></span>
-        <span class="sphere sphere-secondary"></span>
-        <span class="sphere sphere-accent"></span>
-      </div>
-      <div class="three-stage" aria-hidden="true">
-        <canvas id="next-gen-scene"></canvas>
-        <div class="three-fallback">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <div class="hero-inner">
-        <p class="eyebrow reveal-element" style="--reveal-delay:0ms">Exemples de sites générés</p>
-        <h1 id="examples-title" class="hero-title-animated">Des idées concrètes pour imaginer votre futur site.</h1>
-        <p class="hero-copy reveal-element" style="--reveal-delay:150ms">
-          Ces concepts montrent le type d'univers visuel possible pour un site vitrine :
-          clair, moderne, responsive, animé en 3D et pensé pour donner envie de prendre contact.
-        </p>
-        <div class="hero-actions reveal-element" style="--reveal-delay:260ms">
-          <a class="button button-primary" href="site.html#devis">
-            <span>Demander un devis</span>
-            <span class="button-icon" aria-hidden="true">→</span>
-          </a>
-          <a class="button button-secondary" href="#gallery">
-            <span>Explorer les exemples</span>
-            <span class="button-icon" aria-hidden="true">↓</span>
-          </a>
-        </div>
-
-        <div class="hero-contact" aria-label="Coordonnées">
-          <span>Timothé Bonneau</span>
-          <a href="tel:0637696682">06 37 69 66 82</a>
-          <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
-        </div>
-
-        <dl class="hero-proof reveal-element" aria-label="Points forts" style="--reveal-delay:380ms">
-          <div>
-            <dt>6</dt>
-            <dd>ambiances de départ</dd>
-          </div>
-          <div>
-            <dt>3D</dt>
-            <dd>présentation premium</dd>
-          </div>
-          <div>
-            <dt>Mobile</dt>
-            <dd>pensé dès le départ</dd>
-          </div>
-        </dl>
+    <section class="page-hero" aria-labelledby="gallery-title">
+      <div class="section-inner" data-reveal>
+        <p class="section-kicker">Exemples de sites générés</p>
+        <h1 id="gallery-title">Baladez-vous dans la galerie et choisissez votre inspiration.</h1>
+        <p>Chaque exemple est une ambiance possible pour votre site vitrine. Avancez avec les flèches, puis touchez celle qui vous parle — elle rejoint vos inspirations.</p>
       </div>
     </section>
 
-    <section class="examples-gallery" id="gallery" aria-labelledby="gallery-title">
+    <section class="examples-gallery" aria-label="Galerie d'inspirations">
       <div class="section-inner">
         <div class="examples-heading">
-          <div>
-            <p class="section-kicker">Inspirations</p>
-            <h2 id="gallery-title">Choisissez un style, regardez l'ambiance.</h2>
-          </div>
-
+          <div></div>
           <div class="example-filters" aria-label="Filtrer les exemples">
             <button class="filter-button is-active" type="button" data-filter="all">Tous</button>
             <button class="filter-button" type="button" data-filter="commerce">Commerce</button>
@@ -101,137 +53,165 @@
           </div>
         </div>
 
-        <div class="example-grid">
-          <article class="example-card" data-example-card data-category="commerce">
-            <div class="example-preview preview-restaurant" aria-hidden="true">
-              <div class="browser-bar"></div>
-              <div class="mock-hero"></div>
-              <div class="mock-lines">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="service-chooser">
+          <div class="inspiration-experience" data-inspiration-experience aria-label="Balade 3D pour choisir une inspiration">
+            <canvas id="inspiration-scene" aria-hidden="true"></canvas>
+            <div class="inspiration-depth-fallback" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="inspiration-frame" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <em class="inspiration-scanline"></em>
+            </div>
+            <div class="inspiration-hud">
+              <div class="inspiration-hud-main">
+                <p class="choice-helper">Avancez dans la galerie avec les flèches, puis touchez l'inspiration qui vous parle.</p>
+                <div class="inspiration-readout" aria-hidden="true">
+                  <span class="inspiration-status"><i></i> Immersion active</span>
+                  <span class="inspiration-count"><b data-inspiration-index>01</b><u>/</u><b data-inspiration-total>06</b></span>
+                  <span class="inspiration-dest" data-inspiration-name>Maison Locale</span>
+                </div>
               </div>
-              <div class="mock-row">
-                <span></span>
-                <span></span>
+              <div class="inspiration-controls" aria-label="Navigation des inspirations">
+                <button class="inspiration-nav" type="button" data-inspiration-prev aria-label="Inspiration précédente">←</button>
+                <button class="inspiration-nav" type="button" data-inspiration-next aria-label="Inspiration suivante">→</button>
               </div>
             </div>
-            <div class="example-content">
-              <span class="example-tag">Restaurant</span>
-              <h3>Maison Locale</h3>
-              <p>Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement.</p>
+            <div class="inspiration-rail" aria-label="Choix des exemples">
+              <button class="inspiration-choice is-active" type="button" data-example-card data-category="commerce"
+                data-example-title="Maison Locale"
+                data-example-tag="Restaurant"
+                data-example-summary="Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement."
+                data-example-color="#f0a35e"
+                data-example-accent="#7bb69f">
+                <span>Restaurant</span>
+                <strong>Maison Locale</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service"
+                data-example-title="Atelier Bois"
+                data-example-tag="Artisan"
+                data-example-summary="Un site rassurant pour montrer les réalisations, les prestations et déclencher des demandes de devis."
+                data-example-color="#9a7a54"
+                data-example-accent="#79a68f">
+                <span>Artisan</span>
+                <strong>Atelier Bois</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service premium"
+                data-example-title="Studio Élan"
+                data-example-tag="Coach"
+                data-example-summary="Un univers élégant pour présenter une méthode, des accompagnements et des prises de rendez-vous."
+                data-example-color="#6e82f1"
+                data-example-accent="#35c7b7">
+                <span>Coach</span>
+                <strong>Studio Élan</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="premium"
+                data-example-title="Adresse Signature"
+                data-example-tag="Immobilier"
+                data-example-summary="Une vitrine premium pour présenter des biens, rassurer les vendeurs et générer des contacts qualifiés."
+                data-example-color="#3157d5"
+                data-example-accent="#d9a441">
+                <span>Immobilier</span>
+                <strong>Adresse Signature</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="commerce"
+                data-example-title="Maison Minérale"
+                data-example-tag="Boutique"
+                data-example-summary="Une présentation soignée pour mettre en avant une sélection, une histoire de marque et un contact direct."
+                data-example-color="#d6a34c"
+                data-example-accent="#78b7ac">
+                <span>Boutique</span>
+                <strong>Maison Minérale</strong>
+              </button>
+              <button class="inspiration-choice" type="button" data-example-card data-category="service premium"
+                data-example-title="Calme Studio"
+                data-example-tag="Bien-être"
+                data-example-summary="Une ambiance douce pour présenter les soins, les tarifs et simplifier la prise de contact."
+                data-example-color="#57bfa9"
+                data-example-accent="#8f7bd7">
+                <span>Bien-être</span>
+                <strong>Calme Studio</strong>
+              </button>
             </div>
-          </article>
+          </div>
 
-          <article class="example-card" data-example-card data-category="service">
-            <div class="example-preview preview-artisan" aria-hidden="true">
-              <div class="browser-bar"></div>
-              <div class="mock-columns">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="mock-lines">
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div class="example-content">
-              <span class="example-tag">Artisan</span>
-              <h3>Atelier Bois</h3>
-              <p>Un site rassurant pour montrer les réalisations, les prestations et déclencher des demandes de devis.</p>
-            </div>
-          </article>
-
-          <article class="example-card" data-example-card data-category="service premium">
-            <div class="example-preview preview-coach" aria-hidden="true">
-              <div class="browser-bar"></div>
-              <div class="mock-circle"></div>
-              <div class="mock-lines">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div class="example-content">
-              <span class="example-tag">Coach</span>
-              <h3>Studio Élan</h3>
-              <p>Un univers élégant pour présenter une méthode, des accompagnements et des prises de rendez-vous.</p>
-            </div>
-          </article>
-
-          <article class="example-card" data-example-card data-category="premium">
-            <div class="example-preview preview-immo" aria-hidden="true">
-              <div class="browser-bar"></div>
-              <div class="mock-hero"></div>
-              <div class="mock-stat-row">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div class="example-content">
-              <span class="example-tag">Immobilier</span>
-              <h3>Adresse Signature</h3>
-              <p>Une vitrine premium pour présenter des biens, rassurer les vendeurs et générer des contacts qualifiés.</p>
-            </div>
-          </article>
-
-          <article class="example-card" data-example-card data-category="commerce">
-            <div class="example-preview preview-boutique" aria-hidden="true">
-              <div class="browser-bar"></div>
-              <div class="mock-product-grid">
+          <aside class="service-detail" aria-live="polite">
+            <div class="service-visual" aria-hidden="true">
+              <div class="service-device">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
             </div>
-            <div class="example-content">
-              <span class="example-tag">Boutique</span>
-              <h3>Maison Minérale</h3>
-              <p>Une présentation soignée pour mettre en avant une sélection, une histoire de marque et un contact direct.</p>
+            <p class="detail-label">Inspiration sélectionnée</p>
+            <h3 id="example-detail-title">Maison Locale</h3>
+            <p id="example-detail-summary">
+              Une page chaleureuse pour présenter la carte, l'adresse, les horaires et réserver facilement.
+            </p>
+            <div class="detail-plan" id="example-detail-plan">
+              Style : Restaurant
             </div>
-          </article>
-
-          <article class="example-card" data-example-card data-category="service premium">
-            <div class="example-preview preview-wellness" aria-hidden="true">
-              <div class="browser-bar"></div>
-              <div class="mock-wave"></div>
-              <div class="mock-lines">
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div class="example-content">
-              <span class="example-tag">Bien-être</span>
-              <h3>Calme Studio</h3>
-              <p>Une ambiance douce pour présenter les soins, les tarifs et simplifier la prise de contact.</p>
-            </div>
-          </article>
+            <button class="button button-primary service-detail-action" type="button" id="example-detail-action">
+              <span>Ajouter aux inspirations</span>
+              <span class="button-icon" aria-hidden="true">→</span>
+            </button>
+          </aside>
         </div>
-      </div>
-    </section>
 
-    <section class="examples-cta" aria-labelledby="examples-cta-title">
-      <div class="section-inner examples-cta-inner">
-        <div>
-          <p class="section-kicker">Votre projet</p>
-          <h2 id="examples-cta-title">On peut partir d'une inspiration et créer une vitrine à votre image.</h2>
+        <div class="examples-cta-row" data-reveal>
+          <a class="button button-primary" href="contact.html" data-scroll="devis" data-project="Vitrine complète">
+            <span>Continuer vers mon devis</span>
+            <span class="button-icon" aria-hidden="true">→</span>
+          </a>
         </div>
-        <a class="button button-primary" href="site.html#devis">
-          <span>Parler de votre site</span>
-          <span class="button-icon" aria-hidden="true">→</span>
-        </a>
       </div>
     </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-brand"><span class="brand-mark" aria-hidden="true">AV</span> Atelier Vitrine</span>
+        <p class="footer-tagline">Sites vitrine premium pour indépendants, artisans et petites entreprises.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <nav class="footer-nav" aria-label="Pied de page">
+          <a href="accueil.html">Accueil</a>
+          <a href="services.html">Services</a>
+          <a href="exemples.html">Exemples</a>
+          <a href="offres.html">Offres</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <nav class="footer-nav">
+          <span style="color:rgba(255,255,255,0.82)">Timothé Bonneau</span>
+          <a href="tel:0637696682">06 37 69 66 82</a>
+          <a href="mailto:timayecom@gmail.com">timayecom@gmail.com</a>
+        </nav>
+      </div>
+    </div>
+    <p class="footer-legal">© 2026 Atelier Vitrine — Création de sites vitrine.</p>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="three-scene.js"></script>
+  <script src="three-contact.js"></script>
+  <script src="script.js"></script>
   <script src="examples.js"></script>
   <script src="gsap-animations.js"></script>
   <script src="interactive-effects.js"></script>
+  <script src="futuristic-fx.js"></script>
+  <script src="motion.js"></script>
+  <script src="transitions.js"></script>
 </body>
+
 </html>

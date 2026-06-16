@@ -123,7 +123,9 @@
   }
 
   function init() {
-    bootSequence();
+    // L'intro est désormais portée par le portail (index.html) et les
+    // transitions warp entre pages — on ne rejoue plus l'écran d'init ici.
+    void bootSequence;
     addBrackets();
     holographicHeadings();
     reactiveSpotlight();
