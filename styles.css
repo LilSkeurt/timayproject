@@ -3811,21 +3811,21 @@ body.hub-page {
   position: fixed;
   z-index: 60;
   left: clamp(14px, 3vw, 26px);
-  bottom: clamp(14px, 3vw, 26px);
+  top: clamp(82px, 11vh, 108px);
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 11px 17px 11px 13px;
+  gap: 8px;
+  padding: 9px 15px 9px 11px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: var(--ink-strong);
   font-weight: 700;
-  font-size: 0.9rem;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+  font-size: 0.86rem;
+  box-shadow: 0 8px 28px rgba(16, 24, 40, 0.1);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
 }
 
 .hub-return:hover,
@@ -3835,12 +3835,12 @@ body.hub-page {
   border-color: rgba(49, 87, 213, 0.4);
 }
 
-.hub-return svg { width: 18px; height: 18px; display: block; }
+.hub-return svg { width: 16px; height: 16px; display: block; }
 .hub-return .hub-return-dot { fill: var(--blue); }
 
 @media (max-width: 560px) {
   .hub-return span.hub-return-label { display: none; }
-  .hub-return { padding: 12px; }
+  .hub-return { padding: 10px; top: 80px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4004,6 +4004,102 @@ select {
   .offer-card {
     font-size: 0.95rem;
   }
+}
+
+/* --- Consentement formulaire --- */
+.form-row-consent {
+  margin-top: 4px;
+}
+
+.form-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.form-consent-label input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+.form-consent-label a {
+  color: var(--blue) !important;
+  font-weight: 600 !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Feedback formulaire (succès / erreur) --- */
+.form-feedback {
+  display: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.form-feedback.is-visible { display: block; }
+
+.form-feedback.is-success {
+  background: rgba(22, 184, 166, 0.1);
+  border: 1px solid rgba(22, 184, 166, 0.4);
+  color: #0a6b60;
+}
+
+.form-feedback.is-error {
+  background: rgba(220, 60, 60, 0.08);
+  border: 1px solid rgba(220, 60, 60, 0.3);
+  color: #8b1a1a;
+}
+
+/* --- Page politique de confidentialité --- */
+.legal-page .section-inner {
+  max-width: 760px;
+}
+
+.legal-body {
+  margin-top: 48px;
+  display: grid;
+  gap: 36px;
+}
+
+.legal-body h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink-strong);
+}
+
+.legal-body p,
+.legal-body li {
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.legal-body ul {
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.legal-body section {
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.legal-body section:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 720px) {

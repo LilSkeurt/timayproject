@@ -237,12 +237,18 @@
     }
     clearPrefill();
 
-    quoteForm.addEventListener("submit", (event) => {
+    quoteForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       if (!quoteForm.checkValidity()) {
         quoteForm.reportValidity();
         return;
+      }
+
+      const submitBtn = quoteForm.querySelector(".form-submit");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.querySelector("span")?.style && (submitBtn.querySelector("span").textContent = "Envoi en cours…");
       }
 
       const formData = new FormData(quoteForm);
@@ -251,10 +257,52 @@
       const project = formData.get("project-type");
       const service = formData.get("service-choice");
       const timing = formData.get("timing");
+      const business = formData.get("business") || "";
+      const message = formData.get("message") || "";
 
-      if (feedback) {
-        feedback.classList.add("is-visible");
-        feedback.textContent = `Merci ${name}. Votre demande pour "${project}" avec priorité "${service}" est prête. Timothé Bonneau pourra vous rappeler au ${phone} pour préciser le devis, idéalement "${(timing || "").toLowerCase()}".`;
+      // Préparation du payload Web3Forms.
+      // Remplacez la valeur de "access_key" par votre clé obtenue sur web3forms.com
+      const payload = {
+        access_key: "VOTRE_CLE_WEB3FORMS",
+        subject: `Nouveau devis Atelier Vitrine — ${name}`,
+        from_name: "Atelier Vitrine",
+        name,
+        phone,
+        business,
+        project,
+        service,
+        timing,
+        message,
+      };
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          if (feedback) {
+            feedback.classList.add("is-visible", "is-success");
+            feedback.textContent = `Merci ${name} ! Votre demande a bien été envoyée. Timothé vous rappellera au ${phone} pour préciser le devis.`;
+          }
+          quoteForm.reset();
+          clearPrefill();
+        } else {
+          throw new Error(json.message || "Erreur inconnue");
+        }
+      } catch (err) {
+        if (feedback) {
+          feedback.classList.add("is-visible", "is-error");
+          feedback.textContent = "Une erreur s'est produite lors de l'envoi. Contactez Timothé directement au 06 37 69 66 82 ou par mail.";
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.querySelector("span").textContent = "Préparer votre devis gratuit";
+        }
       }
     });
   }
