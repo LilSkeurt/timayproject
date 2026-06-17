@@ -3177,8 +3177,11 @@ html.is-leaving { overflow: hidden; }
   place-items: center;
   pointer-events: none;
   background: radial-gradient(circle at 50% 50%, #11203a 0%, #070d18 56%, #04060c 100%);
-  clip-path: circle(150% at 50% 50%);
-  animation: px-reveal 0.95s cubic-bezier(0.66, 0, 0.34, 1) forwards;
+  opacity: 1;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  /* Dissolution GPU (opacity/transform) : fluide même pendant le chargement du JS. */
+  animation: px-reveal 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .px::before {
@@ -3197,6 +3200,8 @@ html.is-leaving { overflow: hidden; }
   display: grid;
   place-items: center;
   gap: 14px;
+  will-change: opacity, transform;
+  animation: px-core-out 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .px-mark {
@@ -3220,19 +3225,35 @@ html.is-leaving { overflow: hidden; }
 
 .px.is-warping {
   visibility: visible;
-  animation: px-in 0.72s cubic-bezier(0.5, 0, 0.1, 1) forwards;
+  opacity: 0;
+  animation: px-in 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-.px.is-warping::before { animation: px-streaks 0.72s ease-in forwards; }
+.px.is-warping .px-core { animation: px-core-in 0.5s cubic-bezier(0.5, 0, 0.2, 1) forwards; }
+.px.is-warping::before { animation: px-streaks 0.5s ease-in forwards; }
 
+/* ARRIVÉE : le voile sombre se dissout, le sigle AV s'éloigne (on traverse). */
 @keyframes px-reveal {
-  0% { clip-path: circle(150% at 50% 50%); }
-  100% { clip-path: circle(0% at 50% 50%); visibility: hidden; }
+  0% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(1); visibility: hidden; }
 }
 
+@keyframes px-core-out {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* DÉPART : le voile recouvre, le sigle AV émerge — couverture totale dès 72%. */
 @keyframes px-in {
-  0% { clip-path: circle(0% at 50% 50%); visibility: visible; }
-  100% { clip-path: circle(150% at 50% 50%); visibility: visible; }
+  0% { opacity: 0; }
+  72% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes px-core-in {
+  0% { opacity: 0; transform: scale(0.55); }
+  55% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes px-streaks {
@@ -3241,10 +3262,13 @@ html.is-leaving { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .px { animation: px-fade 0.4s ease forwards; clip-path: none; }
-  .px.is-warping { animation: none; opacity: 1; }
+  .px { animation: px-fade 0.32s ease forwards; transform: none; }
+  .px-core { animation: none; }
+  .px.is-warping { animation: px-fade-in 0.28s ease forwards; }
+  .px.is-warping .px-core { animation: none; }
   .px-ring { animation: none; }
   @keyframes px-fade { to { opacity: 0; visibility: hidden; } }
+  @keyframes px-fade-in { from { opacity: 0; } to { opacity: 1; visibility: visible; } }
 }
 
 /* --- Lien de navigation actif --- */

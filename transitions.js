@@ -9,7 +9,7 @@
 (function () {
   const px = document.querySelector("[data-px]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const WARP_MS = 720;
+  const WARP_MS = 520;
   let leaving = false;
 
   function warpTo(url) {
