@@ -3808,31 +3808,34 @@ body.hub-page {
 
 /* --- Bouton flottant « Retour au hub » (pages de contenu) --- */
 .hub-return {
-  position: fixed;
-  z-index: 60;
-  left: clamp(14px, 3vw, 26px);
-  top: clamp(82px, 11vh, 108px);
-  display: inline-flex;
+  position: fixed !important; /* override la règle a:not(...) qui applique position:relative */
+  z-index: 91; /* au-dessus du sound-toggle (z-index:90) */
+  right: 18px;
+  bottom: 72px; /* juste au-dessus du toggle son */
+  display: inline-flex !important;
   align-items: center;
   gap: 8px;
   padding: 9px 15px 9px 11px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  color: var(--ink-strong);
+  color: var(--ink-strong) !important;
   font-weight: 700;
   font-size: 0.86rem;
   box-shadow: 0 8px 28px rgba(16, 24, 40, 0.1);
-  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  text-decoration: none !important;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
 }
 
 .hub-return:hover,
 .hub-return:focus-visible {
-  transform: translateY(-2px);
+  transform: translateY(-2px) !important;
   box-shadow: var(--shadow-strong);
   border-color: rgba(49, 87, 213, 0.4);
+  color: var(--blue) !important;
+  text-decoration: none !important;
 }
 
 .hub-return svg { width: 16px; height: 16px; display: block; }
@@ -3840,7 +3843,7 @@ body.hub-page {
 
 @media (max-width: 560px) {
   .hub-return span.hub-return-label { display: none; }
-  .hub-return { padding: 10px; top: 80px; }
+  .hub-return { padding: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
