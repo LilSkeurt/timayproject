@@ -3459,6 +3459,390 @@ html.is-leaving { overflow: hidden; }
   .portal-teasers { grid-template-columns: 1fr; }
 }
 
+/* ==========================================================================
+   HUB DE NAVIGATION — couloir de portails immersif
+   ========================================================================== */
+
+body.hub-page {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.hub-main {
+  position: relative;
+}
+
+.hub {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  --hub-color: var(--blue);
+  --hub-accent: var(--aqua);
+  background:
+    radial-gradient(circle at 50% 38%, rgba(20, 34, 58, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 120%, rgba(49, 87, 213, 0.18), transparent 60%),
+    linear-gradient(180deg, #060a12 0%, #04060c 100%);
+}
+
+#hub-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Orbes de profondeur (surtout visibles en repli galerie). */
+.hub-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hub-fallback span {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.5;
+  animation: hub-orb 16s ease-in-out infinite;
+}
+
+.hub-fallback span:nth-child(1) { top: -14%; left: -10%; background: rgba(49, 87, 213, 0.45); }
+.hub-fallback span:nth-child(2) { bottom: -18%; right: -12%; background: rgba(22, 184, 166, 0.4); animation-delay: -5s; }
+.hub-fallback span:nth-child(3) { top: 30%; right: 20%; background: rgba(217, 154, 50, 0.28); animation-delay: -9s; }
+
+@keyframes hub-orb {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -4%, 0) scale(1.12); }
+}
+
+/* Cadre HUD (coins + scanline). */
+.hub-frame {
+  position: absolute;
+  inset: clamp(14px, 2.4vw, 30px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hub-frame > span {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(120, 180, 255, 0.5);
+}
+
+.hub-frame > span:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.hub-frame > span:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+.hub-frame > span:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+.hub-frame > span:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+.hub-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(120, 180, 255, 0.5), transparent);
+  animation: hub-scan 6.5s linear infinite;
+}
+
+@keyframes hub-scan {
+  0% { top: 4%; opacity: 0; }
+  12% { opacity: 0.8; }
+  88% { opacity: 0.8; }
+  100% { top: 96%; opacity: 0; }
+}
+
+/* HUD : textes superposés (non bloquants). */
+.hub-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hub-hud-intro {
+  position: absolute;
+  top: clamp(96px, 13vh, 132px);
+  left: clamp(20px, 5vw, 56px);
+  max-width: 460px;
+}
+
+.hub-hud-intro .section-kicker { color: var(--aqua); margin: 0 0 8px; }
+
+.hub-hud-intro h1 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(8, 14, 26, 0.6);
+}
+
+.hub-hint {
+  margin: 0;
+  max-width: 380px;
+  color: rgba(230, 237, 245, 0.74);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.hub-readout {
+  position: absolute;
+  left: clamp(20px, 5vw, 56px);
+  bottom: clamp(154px, 23vh, 230px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-display);
+}
+
+.hub-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(230, 237, 245, 0.62);
+}
+
+.hub-status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hub-accent, var(--aqua));
+  box-shadow: 0 0 12px var(--hub-accent, var(--aqua));
+  animation: hub-blink 2.4s ease-in-out infinite;
+}
+
+@keyframes hub-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hub-count {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.hub-count u { color: rgba(230, 237, 245, 0.4); margin: 0 4px; text-decoration: none; }
+.hub-count b:first-of-type { color: var(--hub-color, var(--blue)); }
+
+.hub-dest {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(230, 237, 245, 0.86);
+}
+
+/* Flèches latérales discrètes. */
+.hub-nav {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(10, 16, 26, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.32s ease, border-color 0.32s ease;
+}
+
+.hub-nav:hover { background: rgba(20, 30, 48, 0.78); border-color: rgba(255, 255, 255, 0.4); }
+.hub-nav-prev { left: clamp(12px, 3vw, 30px); }
+.hub-nav-next { right: clamp(12px, 3vw, 30px); }
+.hub-nav-prev:hover { transform: translateY(-50%) translateX(-3px); }
+.hub-nav-next:hover { transform: translateY(-50%) translateX(3px); }
+
+/* Rail des portails (bas d'écran en mode 3D). */
+.hub-rail {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  bottom: clamp(18px, 4vh, 38px);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 6px clamp(20px, 6vw, 72px);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.hub-rail::-webkit-scrollbar { display: none; }
+
+.hub-portal {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 11px;
+  background: rgba(10, 16, 26, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.86);
+  scroll-snap-align: center;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hub-portal-index {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hub-portal-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.hub-portal-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.hub-portal-desc {
+  display: none;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(230, 237, 245, 0.66);
+}
+
+.hub-portal-go {
+  display: none;
+  font-weight: 800;
+  font-size: 0.86rem;
+  color: var(--hub-color, var(--blue));
+  white-space: nowrap;
+}
+
+.hub-portal:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.32); }
+
+.hub-portal.is-active {
+  transform: translateY(-5px);
+  background: rgba(20, 30, 48, 0.82);
+  border-color: transparent;
+  box-shadow: 0 0 0 1px var(--hub-color, var(--blue)), 0 20px 54px -18px var(--hub-color, var(--blue));
+}
+
+.hub-portal.is-active .hub-portal-index { color: var(--hub-accent, var(--aqua)); }
+.hub-portal.is-active .hub-portal-go { display: inline; }
+
+.hub-portal:focus-visible {
+  outline: 2px solid var(--aqua);
+  outline-offset: 3px;
+}
+
+/* --- Repli galerie : pas de WebGL / reduced-motion / mobile --- */
+.hub.is-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(22px, 4vh, 42px);
+  overflow-y: auto;
+  padding: clamp(98px, 14vh, 150px) 20px clamp(40px, 8vh, 80px);
+  scroll-snap-type: y proximity;
+}
+
+.hub.is-fallback #hub-scene,
+.hub.is-fallback .hub-frame { display: none; }
+
+.hub.is-fallback .hub-hud { position: static; display: contents; }
+.hub.is-fallback .hub-hud-intro { position: static; max-width: 640px; text-align: center; }
+.hub.is-fallback .hub-hint { margin: 0 auto; }
+.hub.is-fallback .hub-readout { display: none; }
+.hub.is-fallback .hub-nav { display: none; }
+
+.hub.is-fallback .hub-rail {
+  position: static;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: min(1100px, 100%);
+  padding: 0;
+  overflow: visible;
+}
+
+.hub.is-fallback .hub-portal {
+  flex: 0 1 320px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 22px;
+  min-height: 156px;
+  scroll-snap-align: center;
+}
+
+.hub.is-fallback .hub-portal-body { gap: 8px; }
+.hub.is-fallback .hub-portal-title { font-size: 1.2rem; }
+.hub.is-fallback .hub-portal-desc { display: block; }
+.hub.is-fallback .hub-portal-go { display: inline; margin-top: auto; }
+
+@media (max-width: 760px) {
+  .hub.is-fallback .hub-rail { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+  .hub.is-fallback .hub-portal { flex-basis: auto; width: 100%; }
+}
+
+/* --- Bouton flottant « Retour au hub » (pages de contenu) --- */
+.hub-return {
+  position: fixed;
+  z-index: 60;
+  left: clamp(14px, 3vw, 26px);
+  bottom: clamp(14px, 3vw, 26px);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 17px 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--ink-strong);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.hub-return:hover,
+.hub-return:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+  border-color: rgba(49, 87, 213, 0.4);
+}
+
+.hub-return svg { width: 18px; height: 18px; display: block; }
+.hub-return .hub-return-dot { fill: var(--blue); }
+
+@media (max-width: 560px) {
+  .hub-return span.hub-return-label { display: none; }
+  .hub-return { padding: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-fallback span,
+  .hub-scanline,
+  .hub-status i { animation: none; }
+  .hub-scanline { display: none; }
+}
+
 @media (max-width: 720px) {
   .welcome-title {
     font-size: clamp(2.1rem, 9vw, 3rem);

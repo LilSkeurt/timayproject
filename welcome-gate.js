@@ -1,7 +1,7 @@
 /* ==========================================================================
    welcome-gate.js — Page d'accueil portail.
    Le logo AV (Blender) flotte en grand, se fait tourner à la souris,
-   et après N touches ouvre un passage dimensionnel vers accueil.html.
+   et après N touches ouvre un passage dimensionnel vers le hub de navigation.
    ========================================================================== */
 
 (function () {
@@ -20,7 +20,7 @@
   try { sessionStorage.setItem("fx_boot_seen", "1"); } catch (error) { /* noop */ }
 
   const REQUIRED_TAPS = Number(stage.dataset.welcomeRequired) || 5;
-  const DESTINATION = "accueil.html";
+  const DESTINATION = "hub.html";
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const RING_CIRCUMFERENCE = 2 * Math.PI * 54;
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hub de navigation — Atelier Vitrine</title>
+  <meta name="description" content="Hub de navigation immersif : avancez dans le couloir holographique et entrez dans la page de votre choix.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Préchargement des destinations pour une ouverture instantanée. -->
+  <link rel="prefetch" href="accueil.html">
+  <link rel="prefetch" href="services.html">
+  <link rel="prefetch" href="exemples.html">
+  <link rel="prefetch" href="offres.html">
+  <link rel="prefetch" href="contact.html">
+</head>
+
+<body class="hub-page">
+  <div class="px" data-px aria-hidden="true">
+    <div class="px-core"><span class="px-ring"></span><span class="px-mark">AV</span></div>
+  </div>
+
+  <header class="site-header" aria-label="Navigation principale">
+    <a class="brand" href="accueil.html" aria-label="Atelier Vitrine">
+      <span class="brand-mark" aria-hidden="true">AV</span>
+      <span>Atelier Vitrine</span>
+    </a>
+    <nav class="main-nav" aria-label="Menu">
+      <a href="accueil.html">Accueil</a>
+      <a href="services.html">Services</a>
+      <a href="exemples.html">Exemples</a>
+      <a href="offres.html">Offres</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="nav-action" href="contact.html">Devis gratuit</a>
+  </header>
+
+  <main class="hub-main">
+    <section class="hub" data-hub-experience aria-label="Hub de navigation immersif">
+      <canvas id="hub-scene" aria-hidden="true"></canvas>
+
+      <div class="hub-fallback" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="hub-frame" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <em class="hub-scanline"></em>
+      </div>
+
+      <div class="hub-hud">
+        <div class="hub-hud-intro">
+          <p class="section-kicker">Hub de navigation</p>
+          <h1>Choisissez votre destination.</h1>
+          <p class="hub-hint">Avancez dans le couloir — molette, flèches ou glissé — puis entrez dans un portail.</p>
+        </div>
+
+        <div class="hub-readout" aria-hidden="true">
+          <span class="hub-status"><i></i> Navigation active</span>
+          <span class="hub-count"><b data-hub-index>01</b><u>/</u><b data-hub-total>05</b></span>
+          <span class="hub-dest" data-hub-name>Accueil</span>
+        </div>
+      </div>
+
+      <button class="hub-nav hub-nav-prev" type="button" data-hub-prev aria-label="Portail précédent">←</button>
+      <button class="hub-nav hub-nav-next" type="button" data-hub-next aria-label="Portail suivant">→</button>
+
+      <nav class="hub-rail" aria-label="Pages du site">
+        <a class="hub-portal" href="accueil.html" data-hub-portal data-color="#3157d5" data-accent="#16b8a6"
+          data-desc="Le cœur du projet : hero immersif et vue d'ensemble.">
+          <span class="hub-portal-index">01</span>
+          <span class="hub-portal-body">
+            <span class="hub-portal-title">Accueil</span>
+            <span class="hub-portal-desc">Le cœur du projet : hero immersif et vue d'ensemble.</span>
+          </span>
+          <span class="hub-portal-go">Entrer →</span>
+        </a>
+
+        <a class="hub-portal" href="services.html" data-hub-portal data-color="#16b8a6" data-accent="#3157d5"
+          data-desc="Design, pages essentielles, mise en ligne : composez votre site.">
+          <span class="hub-portal-index">02</span>
+          <span class="hub-portal-body">
+            <span class="hub-portal-title">Services</span>
+            <span class="hub-portal-desc">Design, pages essentielles, mise en ligne : composez votre site.</span>
+          </span>
+          <span class="hub-portal-go">Entrer →</span>
+        </a>
+
+        <a class="hub-portal" href="exemples.html" data-hub-portal data-color="#d99a32" data-accent="#e7c06a"
+          data-desc="Baladez-vous dans la galerie 3D et choisissez une inspiration.">
+          <span class="hub-portal-index">03</span>
+          <span class="hub-portal-body">
+            <span class="hub-portal-title">Exemples</span>
+            <span class="hub-portal-desc">Baladez-vous dans la galerie 3D et choisissez une inspiration.</span>
+          </span>
+          <span class="hub-portal-go">Entrer →</span>
+        </a>
+
+        <a class="hub-portal" href="offres.html" data-hub-portal data-color="#213b8f" data-accent="#d99a32"
+          data-desc="À partir de 500 € : choisissez une base, je m'adapte.">
+          <span class="hub-portal-index">04</span>
+          <span class="hub-portal-body">
+            <span class="hub-portal-title">Offres</span>
+            <span class="hub-portal-desc">À partir de 500 € : choisissez une base, je m'adapte.</span>
+          </span>
+          <span class="hub-portal-go">Entrer →</span>
+        </a>
+
+        <a class="hub-portal" href="contact.html" data-hub-portal data-color="#0f9f8f" data-accent="#16b8a6"
+          data-desc="Décrivez votre projet, recevez un devis gratuit.">
+          <span class="hub-portal-index">05</span>
+          <span class="hub-portal-body">
+            <span class="hub-portal-title">Contact</span>
+            <span class="hub-portal-desc">Décrivez votre projet, recevez un devis gratuit.</span>
+          </span>
+          <span class="hub-portal-go">Entrer →</span>
+        </a>
+      </nav>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="interactive-effects.js"></script>
+  <script src="hub.js"></script>
+  <script src="transitions.js"></script>
+</body>
+
+</html>
